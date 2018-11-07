@@ -1,0 +1,59 @@
+import remeras.*
+import sucursales.*
+describe "tests de la parte A"{
+	var remera1 = new Lisa(
+		talle = 40,
+		color = "gris"
+	)
+	var remera2 = new Lisa(
+		talle = 42,
+		color = "gris"
+	)
+	var remera3 = new Lisa(
+		talle = 40,
+		color = "rojo"
+	)
+	var remera4 = new Lisa(
+		talle = 42,
+		color = "verde"
+	)
+	var remeraBordada1 = new Bordada(
+		talle = 44,
+		color = "blanco",
+		cantidadDeColores = 1
+	)
+	var remeraBordada2 = new Bordada(
+		talle = 44,
+		color = "blanco",
+		cantidadDeColores = 4
+	)
+	var remeraSublimada1 = new Sublimada(
+		talle = 42,
+		color = "gris",
+		costoCopyright = 100,
+		altoDibujo = 15,
+		anchoDibujo = 10
+	)
+	test "talle 40 Cuesta 80"{
+		assert.equals(80, remera1.costo())
+	}
+	test "talle 42 Cuesta 100"{
+		assert.equals(100, remera2.costo())
+	}
+	
+	test "talle 40 de color Cuesta 88"{
+		assert.equals(88, remera3.costo())
+	}
+	test "talle 42 de color Cuesta 110"{
+		assert.equals(110, remera4.costo())
+	}
+	test "talle 44, blanca y con bordados de 1 color cuesta 120"{
+		assert.equals(120, remeraBordada1.costo())
+	}
+	test "talle 44, blanca y con bordados de 4 colores cuesta 120"{
+		assert.equals(140, remeraBordada2.costo())
+	}
+	test "Remera talle 42 con sublimado frozen costo 275"{
+		assert.equals(275, remeraSublimada1.costo())
+	}
+}

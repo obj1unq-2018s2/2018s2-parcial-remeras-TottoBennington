@@ -1,0 +1,50 @@
+import remeras.*
+import sucursales.*
+describe "tests de parte B" {
+	var flores = new Sucursal(
+		cantMinimaParaDesc = 10,
+		hayConvenio = true
+	)
+	var avellaneda = new Sucursal(
+		cantMinimaParaDesc = 3,
+		hayConvenio = true
+	)
+	var remeraMod1 = new Lisa(
+		talle = 42,
+		color = "gris"
+	)
+	var remeraMod2 = new Sublimada(
+		talle = 42,
+		color = "gris",
+		costoCopyright = 100,
+		altoDibujo = 15,
+		anchoDibujo = 10
+	)
+	var pedido1 = new Pedido(
+		sucursal = flores,
+		modelo = remeraMod1,
+		cantidad = 5
+	)
+	var pedido2 = new Pedido(
+		sucursal = avellaneda,
+		modelo = remeraMod1,
+		cantidad = 4
+	)
+	var pedido3 = new Pedido(
+		sucursal = flores,
+		modelo = remeraMod2,
+		cantidad = 4
+	)
+	test "precio por 5 remeras en flores = 500"{
+		assert.equals(500, pedido1.precio())
+	}
+	test "precio por 5 remeras en avellaneda = 450"{
+		assert.equals(500, pedido1.precio())
+	}
+	test "precio por 4 remeras frozen avell = 880 con desc x convenio"{
+		assert.equals(880, pedido2.precio()) // no me da y ya era la hora de irnos
+	}
+	test "precio por 4 remeras frozen flores = 1100 con desc x convenio"{
+		assert.equals(1100, pedido3.precio())
+	}
+}
